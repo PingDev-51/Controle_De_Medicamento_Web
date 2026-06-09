@@ -1,4 +1,6 @@
 using ControleDeMedicamento.WebApp.Arquivos.Infra.Arquivos;
+using ControleDeMedicamento.WebApp.ModuloFornecedores.Dominio;
+using ControleDeMedicamento.WebApp.ModuloFornecedores.infra;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +22,7 @@ builder.Services.AddControllersWithViews().AddRazorOptions(options =>
     options.ViewLocationFormats.Add("/Compartilhado/Apresentacao/Views/{0}.cshtml");
 });
 
-//Injeção de depedencia aqui ---
+builder.Services.AddScoped<IRepositorioFornecedores, RepositorioFornecedoresEmArquivo>();
 
 var app = builder.Build();
 

@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <Folder Include="Compartilhado\" />
+    <Folder Include="ModuloFornecedores\Dominio\" />
+    <Folder Include="ModuloFornecedores\infra\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

@@ -1,0 +1,54 @@
+﻿@using ControleDeMedicamento.WebApp.ModuloFornecedores.Apresentacao
+@{
+    Layout = "_Layout";
+    ViewBag.Titulo = "Lista de Fornecedores";
+}
+
+<a class="btn btn-outline-primary rounded-pill px-4 mb-3" asp-action="Cadastrar">Cadastrar Novo</a>
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-primary border-start border-primary border-4 rounded-3" role="alert">
+        Nenhuma Lista cadastrada.
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered align-middle bg-white">
+            <thead class="table-primary">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>CNPJ</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (ListarFornecedoresViewModel f in Model)
+                {
+                    <tr>
+                        <td>@f.Id</td>
+                        <td>@f.Nome</td>
+                        <td>@f.Telefone</td>
+                        <td>@f.Cnpj</td>
+                        <td>
+                            <div>
+                                <a class="btn btn-outline-primary btn-sm rounded-pill px-3" asp-controller="Itens"
+                                   asp-action="ListarItensDaLista">Adicionar</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <a class="btn btn-outline-primary btn-sm rounded-pill px-3" asp-action="Editar"
+                                   asp-route-id="@f.Id">Editar</a>
+                                <a class="btn btn-outline-primary btn-sm rounded-pill px-3" asp-action="Excluir"
+                                   asp-route-id="@f.Id">Excluir</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

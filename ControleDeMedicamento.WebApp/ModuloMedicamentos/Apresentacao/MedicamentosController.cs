@@ -104,10 +104,38 @@ public class MedicamentosController : Controller
         return RedirectToAction(nameof(Listar));
     }
 
-
-    private List<ListarMedicamentosViewModel> MapearMedicamentos(List<Medicamento> medicamento)
+    [HttpGet]
+    public ActionResult Excluir(string id)
     {
-        List<ListarMedicamentosViewModel> listarVm = medicamento.Select(m => new ListarMedicamentosViewModel(
+        Medicamento? medicamentos = repositorioMedicamento.SelecionarPorId(id);
+
+        if (medicamentos == null)
+            return RedirectToAction(nameof(Listar));
+
+        ExcluirMedicamentosViewModel excluirVm = new ExcluirMedicamentosViewModel(
+            id,
+            medicamentos.Nome,
+            medicamentos.Descricao,
+            SelecionarFornecedor()
+        );
+
+        return View(excluirVm);
+    }
+
+    [HttpPost]
+    public ActionResult Excluir(ExcluirMedicamentosViewModel excluirVm)
+    {
+        Medicamento? medicamentos = repositorioMedicamento.SelecionarPorId(excluirVm.Id);
+
+        if (medicamentos != null)
+            repositorioMedicamento.Excluir(medicamentos);
+
+        return RedirectToAction(nameof(Listar));
+    }
+
+    private List<ListarMedicamentosViewModel> MapearMedicamentos(List<Medicamento> medicamentos)
+    {
+        List<ListarMedicamentosViewModel> listarVm = medicamentos.Select(m => new ListarMedicamentosViewModel(
             m.Id,
             m.Nome,
             m.Descricao,

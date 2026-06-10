@@ -9,23 +9,32 @@
             Organize seus Medicamentos
         </p>
 
-        <a class="btn btn-primary rounded-pill px-4" asp-controller="Categoria" asp-action="Listar">Novo Modulo</a>
+        <a class="btn btn-primary rounded-pill px-4" asp-controller="Fornecesdores" asp-action="Listar">Controle de
+            Fornecedor</a>
+            <a class="btn btn-primary rounded-pill px-4" asp-controller="Medicamentos" asp-action="Listar">Cotrole de
+                Medicamentos</a>
 
         
-    </div>
+            </div>
 
-    <div class="col-lg-5">
-        <div class="card border-primary-subtle shadow-sm">
-            <div class="card-body p-4">
-                <h3 class="h5 text-primary mb-3">Módulos disponíveis</h3>
+            <div class="col-lg-5">
+                <div class="card border-primary-subtle shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="h5 text-primary mb-3">Módulos disponíveis</h3>
 
-                <div class="list-group">
-                    <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-                       asp-controller="Fornecedores" asp-action="Listar">
-                        Controle de Fornecedores
-                        <span class="badge text-bg-primary rounded-pill">Abrir</span>
-                    </a>
+                        <div class="list-group">
+                            <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                               asp-controller="Fornecedores" asp-action="Listar">
+                                Controle de Fornecedores
+                                <span class="badge text-bg-primary rounded-pill">Abrir</span>
+                            </a>
+
+                            <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                               asp-controller="Medicamentos" asp-action="Listar">
+                                Controle de Medicamentos
+                                <span class="badge text-bg-primary rounded-pill">Abrir</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>

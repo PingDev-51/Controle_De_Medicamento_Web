@@ -1,0 +1,50 @@
+﻿@using ControleDeMedicamento.WebApp.ModuloDeMedicamentos.Apresentacao
+@using ControleDeMedicamento.WebApp.ModuloFornecedores.Apresentacao
+@{
+    Layout = "_Layout";
+    ViewBag.Titulo = "Lista de Medicamentos";
+}
+
+<a class="btn btn-outline-primary rounded-pill px-4 mb-3" asp-action="Cadastrar">Cadastrar Novo</a>
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-primary border-start border-primary border-4 rounded-3" role="alert">
+        Nenhuma Lista cadastrada.
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered align-middle bg-white">
+            <thead class="table-primary">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Fornecedor</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (ListarMedicamentosViewModels m in Model)
+                {
+                    <tr>
+                        <td>@m.Id</td>
+                        <td>@m.Nome</td>
+                        <td>@m.Descricao</td>
+                        <td>@m.Fornecedor</td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <a class="btn btn-outline-primary btn-sm rounded-pill px-3" asp-action="Editar"
+                                   asp-route-id="@m.Id">Editar</a>
+                                <a class="btn btn-outline-primary btn-sm rounded-pill px-3" asp-action="Excluir"
+                                   asp-route-id="@m.Id">Excluir</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

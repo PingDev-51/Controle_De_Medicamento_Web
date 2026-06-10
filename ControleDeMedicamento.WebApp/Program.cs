@@ -1,4 +1,6 @@
 using ControleDeMedicamento.WebApp.Arquivos.Infra.Arquivos;
+using ControleDeMedicamento.WebApp.ModuloDeMedicamentos.Dominio;
+using ControleDeMedicamento.WebApp.ModuloDeMedicamentos.Infra;
 using ControleDeMedicamento.WebApp.ModuloFornecedores.Dominio;
 using ControleDeMedicamento.WebApp.ModuloFornecedores.infra;
 
@@ -23,6 +25,7 @@ builder.Services.AddControllersWithViews().AddRazorOptions(options =>
 });
 
 builder.Services.AddScoped<IRepositorioFornecedores, RepositorioFornecedoresEmArquivo>();
+builder.Services.AddScoped<IRepositorioMedicamento, RepositorioMedicamentoEmArquivo>();
 
 var app = builder.Build();
 

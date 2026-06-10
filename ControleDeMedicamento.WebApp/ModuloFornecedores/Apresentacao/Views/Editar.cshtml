@@ -4,10 +4,10 @@
     ViewBag.Titulo = "Cadastrar Fornecedores";
 }
 
-@model CadastrarFornecedoresViewModel;
+@model EditarFornecedoresViewModel;
 
-<form class="card border-primary-subtle shadow-sm mx-auto p-4" style="max-width: 620px;" asp-action="Cadastrar"
-      method="post">
+<form class="card border-primary-subtle shadow-sm mx-auto p-4" style="max-width: 620px;" asp-action="Editar"
+      asp-route-id="@Model.Id" method="post">
 
     <div class="mb-3">
         <label asp-for="Nome" class="form-label fw-semibold text-primary text-uppercase small">Nome</label>

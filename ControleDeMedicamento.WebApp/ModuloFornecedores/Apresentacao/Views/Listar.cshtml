@@ -22,6 +22,7 @@ else
                     <th>Nome</th>
                     <th>Telefone</th>
                     <th>CNPJ</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,12 +33,6 @@ else
                         <td>@f.Nome</td>
                         <td>@f.Telefone</td>
                         <td>@f.Cnpj</td>
-                        <td>
-                            <div>
-                                <a class="btn btn-outline-primary btn-sm rounded-pill px-3" asp-controller="Itens"
-                                   asp-action="ListarItensDaLista">Adicionar</a>
-                            </div>
-                        </td>
                         <td>
                             <div class="d-flex gap-2">
                                 <a class="btn btn-outline-primary btn-sm rounded-pill px-3" asp-action="Editar"

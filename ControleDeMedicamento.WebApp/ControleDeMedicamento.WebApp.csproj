@@ -5,11 +5,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Compartilhado\"/>
-    <Folder Include="wwwroot\"/>
+    <Folder Include="Compartilhado\" />
+    <Folder Include="Modulos\ModuloFuncionarios\Infra\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="16.1.1"/>
-    <PackageReference Include="FluentResults" Version="4.0.0"/>
+    <PackageReference Include="AutoMapper" Version="16.1.1" />
+    <PackageReference Include="FluentResults" Version="4.0.0" />
   </ItemGroup>
 </Project>

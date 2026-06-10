@@ -1,5 +1,7 @@
 using ControleDeMedicamento.WebApp.Arquivos.Infra.Arquivos;
 using ControleDeMedicamento.WebApp.ModuloPacientes.Dominio;
+using ControleDeMedicamento.WebApp.Modulos.ModuloFuncionarios.Dominio;
+using ControleDeMedicamento.WebApp.Modulos.ModuloFuncionarios.Infra;
 
 namespace ControleDeMedicamento.WebApp.Modulos.ModuloPaciente.Infra;
 public static class InjecaoDepencencia
@@ -16,6 +18,7 @@ public static class InjecaoDepencencia
     });
 
         services.AddScoped<IRepositorioPaciente, RepositorioPacienteEmArquivo>();
+        services.AddScoped<IRepositorioFuncionario, RepositorioFuncionarioEmArquivo>();
         
     }
 }

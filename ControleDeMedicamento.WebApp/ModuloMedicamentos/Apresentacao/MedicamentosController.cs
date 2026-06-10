@@ -24,12 +24,90 @@ public class MedicamentosController : Controller
         return View(MapearMedicamentos(medicamentos));
     }
 
-
-
-
-    private List<ListarMedicamentosViewModels> MapearMedicamentos(List<Medicamento> medicamento)
+    [HttpGet]
+    public ActionResult Cadastrar()
     {
-        List<ListarMedicamentosViewModels> listarVm = medicamento.Select(m => new ListarMedicamentosViewModels(
+        CadastrarMedicamentosViewModel cadasstrarVm = new CadastrarMedicamentosViewModel(
+            string.Empty,
+            string.Empty,
+            string.Empty,
+            SelecionarFornecedor()
+        );
+
+        return View(cadasstrarVm);
+    }
+
+    [HttpPost]
+    public ActionResult Cadastrar(CadastrarMedicamentosViewModel cadastrarVm)
+    {
+        Fornecedor? selecionarFornecedor = repositoriofornecedor.SelecionarPorId(cadastrarVm.FornecedorId);
+
+        if (selecionarFornecedor == null)
+            ModelState.AddModelError(nameof(cadastrarVm.FornecedorId), "Selecione um fornecedor valido");
+
+        if (!ModelState.IsValid)
+            return View(cadastrarVm with
+            {
+                Fornecedores = SelecionarFornecedor()
+            });
+
+        Medicamento novoMedicamento = new Medicamento(
+            cadastrarVm.Nome,
+            cadastrarVm.Descricao,
+            selecionarFornecedor!
+        );
+
+        repositorioMedicamento.Cadastrar(novoMedicamento);
+
+        return RedirectToAction(nameof(Listar));
+    }
+
+    [HttpGet]
+    public ActionResult Editar(string id)
+    {
+        Medicamento? medicamentos = repositorioMedicamento.SelecionarPorId(id);
+
+        if (medicamentos == null)
+            return RedirectToAction(nameof(Listar));
+
+        EditarMedicamentosViewModel editarVm = new EditarMedicamentosViewModel(
+            id,
+            medicamentos.Nome,
+            medicamentos.Descricao,
+            medicamentos.Fornecedor.Id,
+            SelecionarFornecedor()
+        );
+
+        return View(editarVm);
+    }
+
+    [HttpPost]
+    public ActionResult Editar(EditarMedicamentosViewModel editarVm)
+    {
+        Medicamento? medicamentos = repositorioMedicamento.SelecionarPorId(editarVm.Id);
+        Fornecedor? fornecedorSelecionado = repositoriofornecedor.SelecionarPorId(editarVm.FornecedorId);
+
+        if (medicamentos == null)
+            return RedirectToAction(nameof(Listar));
+
+        if (fornecedorSelecionado == null)
+            ModelState.AddModelError(nameof(editarVm.FornecedorId), "Selecione um fornecedor valido");
+
+        Medicamento medicamentoAtualizado = new Medicamento(
+            editarVm.Nome,
+            editarVm.Descricao,
+            fornecedorSelecionado!
+        );
+
+        repositorioMedicamento.Editar(editarVm.Id, medicamentoAtualizado);
+
+        return RedirectToAction(nameof(Listar));
+    }
+
+
+    private List<ListarMedicamentosViewModel> MapearMedicamentos(List<Medicamento> medicamento)
+    {
+        List<ListarMedicamentosViewModel> listarVm = medicamento.Select(m => new ListarMedicamentosViewModel(
             m.Id,
             m.Nome,
             m.Descricao,

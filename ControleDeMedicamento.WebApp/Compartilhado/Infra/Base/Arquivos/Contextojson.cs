@@ -1,11 +1,12 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using ControleDeMedicamento.WebApp.ConsoleApp.ModuloPacientes;
 
 namespace ControleDeMedicamento.WebApp.Arquivos.Infra.Arquivos;
 
 public sealed class ContextoJson
 {
-    //propriedades dos modulos aqui---
+    public List<Paciente> Pacientes { get; set; } = new();
 
     private readonly string caminhoArquivo;
 
@@ -14,7 +15,7 @@ public sealed class ContextoJson
         string caminhoAppData = Environment
             .GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
-        string caminhoDiretorio = Path.Combine(caminhoAppData, "ClubeDaLeituraWeb");
+        string caminhoDiretorio = Path.Combine(caminhoAppData, "ControleDeMedicametosWeb");
 
         Directory.CreateDirectory(caminhoDiretorio);
 
@@ -51,5 +52,6 @@ public sealed class ContextoJson
             return;
 
         //salvar os contextos aqui
+        Pacientes = contextoSalvo.Pacientes;
     }
 }

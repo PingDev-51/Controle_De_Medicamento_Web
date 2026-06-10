@@ -1,26 +1,13 @@
-using ControleDeMedicamento.WebApp.Arquivos.Infra.Arquivos;
+
+using ControleDeMedicamento.WebApp.Compartilhado.Aplicacao;
+using ControleDeMedicamento.WebApp.Compartilhado.Apresentacao;
+using ControleDeMedicamento.WebApp.Modulos.ModuloPaciente.Infra;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddScoped<ContextoJson>(provider =>
-{
-    ContextoJson contexto = new ContextoJson();
-
-    contexto.Carregar();
-
-    return contexto;
-});
-
-builder.Services.AddControllersWithViews().AddRazorOptions(options =>
-{
-    options.ViewLocationFormats.Clear();
-
-    options.ViewLocationFormats.Add("/Modulo{1}/Apresentacao/Views/{0}.cshtml");
-
-    options.ViewLocationFormats.Add("/Compartilhado/Apresentacao/Views/{0}.cshtml");
-});
-
-//Injeção de depedencia aqui ---
+builder.Services.AdicionarCamadaInfraestrutura();
+builder.Services.AddApplicationServices();
+builder.Services.AddPresentationConfig();
 
 var app = builder.Build();
 

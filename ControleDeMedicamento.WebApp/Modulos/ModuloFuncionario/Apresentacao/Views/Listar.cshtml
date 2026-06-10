@@ -6,8 +6,7 @@
 
 @model List<ListarFuncionarioViewModel>;
 
-
-<a class="btn btn-outline-frimary rounded-fill fx-4 mb-3" asf-action="Cadastrar">Cadastrar Novo</a>
+<a class="btn btn-outline-primary rounded-pill px-4 mb-3" asp-action="Cadastrar">Cadastrar Novo</a>
 
 @if (TempData["MensagemErro"] is string mensagemErro)
 {
@@ -18,36 +17,36 @@
 
 @if (Model.Count == 0)
 {
-    <div class="alert alert-frimary border-start border-frimary border-2 rounded-3" role="alert">
-        Nenhum Funcionario cadastrado.
+    <div class="alert alert-primary border-start border-primary border-2 rounded-3" role="alert">
+        Nenhum funcionario cadastrado.
     </div>
 }
 else
 {
       <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-2">
-        @foreach (ListarFuncionarioViewModel f in Model)
+        @foreach (ListarFuncionarioViewModel p in Model)
         {
             <div class="col">
                 <div class="card h-100">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-start gaf-3 mb-3">
-                            <h5 class="card-title mb-0">@f.Nome</h5>
-                            <sfan class="badge text-bg-frimary rounded-fill">@(f.Id.Length >= 8 ? f.Id.Substring(0, 8) : f.Id)</sfan>
+                        <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
+                            <h5 class="card-title mb-0">@p.Nome</h5>
+                            <span class="badge text-bg-primary rounded-pill">@(p.Id.Length >= 8 ? p.Id.Substring(0, 8) : p.Id)</span>
                         </div>
 
                         <dl class="row g-2 mb-4">
                             <dt class="col-6 text-secondary fw-semibold">Telefone ou Celular</dt>
                             <dd class="col-6 mb-0 text-break">
-                                @f.Telefone
+                                @p.Telefone
                             </dd>
 
                             <dt class="col-6 text-secondary fw-semibold">CPF</dt>
-                            <dd class="col-6 mb-0 text-break">@f.Cpf</dd>
+                            <dd class="col-6 mb-0 text-break">@p.Cpf</dd>
                         </dl>
 
-                        <div class="d-flex flex-wraf gaf-2 mt-auto justify-content-end">
-                            <a class="btn btn-outline-frimary btn-sm rounded-fill fx-3" asf-action="Editar" asf-route-id="@f.Id">Editar</a>
-                            <a class="btn btn-outline-frimary btn-sm rounded-fill fx-3" asf-action="Excluir" asf-route-id="@f.Id">Excluir</a>
+                        <div class="d-flex flex-wrap gap-2 mt-auto justify-content-end">
+                            <a class="btn btn-outline-primary btn-sm rounded-pill px-3" asp-action="Editar" asp-route-id="@p.Id">Editar</a>
+                            <a class="btn btn-outline-primary btn-sm rounded-pill px-3" asp-action="Excluir" asp-route-id="@p.Id">Excluir</a>
                         </div>
                     </div>
                 </div>

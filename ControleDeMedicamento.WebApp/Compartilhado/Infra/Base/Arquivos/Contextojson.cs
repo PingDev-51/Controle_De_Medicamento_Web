@@ -12,7 +12,6 @@ public sealed class ContextoJson
     public List<Fornecedor> Fornecedores { get; set; } = new();
     public List<Paciente> Pacientes { get; set; } = new();
     public List<Medicamento> Medicamentos { get; set; } = new();
-
     public List<Funcionario> Funcionarios { get; set; } = new();
 
     private readonly string caminhoArquivo;
@@ -61,7 +60,7 @@ public sealed class ContextoJson
         //salvar os contextos aqui
         Fornecedores = contextoSalvo.Fornecedores;
         Pacientes = contextoSalvo.Pacientes;
-        Pacientes = contextoSalvo.Pacientes;
         Medicamentos = contextoSalvo.Medicamentos;
+        Funcionarios = contextoSalvo.Funcionarios;
     }
 }

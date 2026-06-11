@@ -6,6 +6,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Compartilhado\" />
+    <Folder Include="Modulos\ModuloEstoque\Base\" />
+    <Folder Include="Modulos\ModuloEstoque\Base\Apresentacao\" />
+    <Folder Include="Modulos\ModuloEstoque\Base\Dominio\" />
+    <Folder Include="Modulos\ModuloEstoque\Base\Infra\" />
+    <Folder Include="Modulos\ModuloEstoque\RequisicaoDeEntrada\" />
+    <Folder Include="Modulos\ModuloEstoque\RequisicaoDeEntrada\Apresentacao\" />
+    <Folder Include="Modulos\ModuloEstoque\RequisicaoDeEntrada\Dominio\" />
+    <Folder Include="Modulos\ModuloEstoque\RequisicaoDeEntrada\Infra\" />
     <Folder Include="Modulos\ModuloFuncionarios\Infra\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>

@@ -1,6 +1,8 @@
 using System;
 using ControleDeMedicamento.WebApp.Compartilhado.Dominio.Base;
 using ControleDeMedicamento.WebApp.ModuloFornecedores.Dominio;
+using ControleDeMedicamento.WebApp.Modulos.ModuloEstoque.Base.Dominio;
+using ControleDeMedicamento.WebApp.Modulos.ModuloEstoque.RequisicaoDeEntrada.Dominio;
 
 namespace ControleDeMedicamento.WebApp.ModuloDeMedicamentos.Dominio;
 
@@ -9,31 +11,31 @@ public class Medicamento : EntidadeBase<Medicamento>
     public string Nome { get; set; } = string.Empty;
     public string Descricao { get; set; } = string.Empty;
     public Fornecedor Fornecedor { get; set; } = null!;
-    // public List<RequisicaoBase> Requisicoes { get; set; } = new List<RequisicaoBase>();
-    // public uint QuantidadeEmEstoque
-    // {
-    //     get
-    //     {
-    //         uint quantidadeEmEstoque = 0;
+    public List<RequisicaoBase> Requisicoes { get; set; } = new List<RequisicaoBase>();
+    public uint QuantidadeEmEstoque
+    {
+        get
+        {
+            uint quantidadeEmEstoque = 0;
 
-    //         foreach (RequisicaoBase req in Requisicoes)
-    //         {
-    //             if (req is RequisicaoEntrada reqEntrada)
-    //                 quantidadeEmEstoque += reqEntrada.Quantidade;
+            foreach (RequisicaoBase req in Requisicoes)
+            {
+                if (req is RequisicaoEntrada reqEntrada)
+                    quantidadeEmEstoque += reqEntrada.Quantidade;
 
-    //             else if (req is RequisicaoSaida reqSaida)
-    //             {
-    //                 foreach (MedicamentoPrescrito medPresc in reqSaida.MedicamentosPrescritos)
-    //                 {
-    //                     if (medPresc.Medicamento == this)
-    //                         quantidadeEmEstoque -= medPresc.Quantidade;
-    //                 }
-    //             }
-    //         }
+                // else if (req is RequisicaoSaida reqSaida)
+                // {
+                //     foreach (MedicamentoPrescrito medPresc in reqSaida.MedicamentosPrescritos)
+                //     {
+                //         if (medPresc.Medicamento == this)
+                //             quantidadeEmEstoque -= medPresc.Quantidade;
+                //     }
+                // }
+            }
 
-    //         return quantidadeEmEstoque;
-    //     }
-    // }
+            return quantidadeEmEstoque;
+        }
+    }
 
     public Medicamento()
     {
@@ -46,10 +48,10 @@ public class Medicamento : EntidadeBase<Medicamento>
         Fornecedor = fornecedor;
     }
 
-    // public void RegistrarRequisicao(RequisicaoBase requisicao)
-    // {
-    //     Requisicoes.Add(requisicao);
-    // }
+    public void RegistrarRequisicao(RequisicaoBase requisicao)
+    {
+        Requisicoes.Add(requisicao);
+    }
 
     public override List<string> Validar()
     {

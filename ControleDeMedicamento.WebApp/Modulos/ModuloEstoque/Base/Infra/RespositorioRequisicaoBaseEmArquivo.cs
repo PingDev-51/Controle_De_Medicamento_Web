@@ -2,6 +2,7 @@ using System;
 using ControleDeMedicamento.WebApp.Arquivos.Infra.Arquivos;
 using ControleDeMedicamento.WebApp.Modulos.ModuloEstoque.Base.Dominio;
 using ControleDeMedicamento.WebApp.Modulos.ModuloEstoque.RequisicaoDeEntrada.Dominio;
+using ControleDeMedicamento.WebApp.Modulos.ModuloEstoque.RequisicaoDeSaida.Dominio;
 
 namespace ControleDeMedicamento.WebApp.Modulos.ModuloEstoque.Base.Infra;
 
@@ -38,16 +39,16 @@ public abstract class RepositorioRequisicaoEmArquivo : RequisicaoBase, IReposito
         return requisicoesEntrada;
     }
 
-    // public List<RequisicaoSaida> SelecionarRequisicoesSaida()
-    // {
-    //     List<RequisicaoSaida> requisicoesSaida = new List<RequisicaoSaida>();
+    public List<Saida> SelecionarRequisicoesSaida()
+    {
+        List<Saida> requisicoesSaida = new List<Saida>();
 
-    //     foreach (RequisicaoBase req in registros)
-    //     {
-    //         if (req is RequisicaoSaida reqSaida)
-    //             requisicoesSaida.Add(reqSaida);
-    //     }
+        foreach (RequisicaoBase req in registros)
+        {
+            if (req is Saida reqSaida)
+                requisicoesSaida.Add(reqSaida);
+        }
 
-    //     return requisicoesSaida;
-    // }
+        return requisicoesSaida;
+    }
 }

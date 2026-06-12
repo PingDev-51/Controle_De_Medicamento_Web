@@ -8,8 +8,10 @@ public record ListarRequisicaoEntradaViewModels(
 );
 
 public record CadastrarRequisicaoEntrdaViewModel(
-    string Funcionario,
-    string Medicamento,
+    string FuncionarioId,
+    string MedicamentoId,
+    List<OpcaoFuncionarioViewModel> Funcionarios,
+    List<OpcaoMedicamentoViewModel> Medicamentos,
     uint quantidade
 );
 

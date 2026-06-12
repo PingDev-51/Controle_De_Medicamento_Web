@@ -1,0 +1,51 @@
+﻿@using ControleDeMedicamento.WebApp.ModuloFornecedores.Apresentacao
+@using ControleDeMedicamento.WebApp.Modulos.ModuloEstoque.RequisicaoDeEntrada.Apresentacao
+@{
+    Layout = "_Layout";
+    ViewBag.Titulo = "Lista de Fornecedores";
+}
+
+<a class="btn btn-outline-primary rounded-pill px-4 mb-3" asp-action="Cadastrar">Cadastrar Novo</a>
+
+@if (TempData["MensagemErro"] is string mensagemErro)
+{
+    <div class="alert alert-danger border-start border-danger border-4 rounded-3" role="alert">
+        @mensagemErro
+    </div>
+}
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-primary border-start border-primary border-2 rounded-3" role="alert">
+        Nenhum fornecedor cadastrado.
+    </div>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-2">
+        @foreach (ListarRequisicaoEntradaViewModels r in Model)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
+                            <h5 class="card-title mb-0">@r.Funcionario</h5>
+                            <span class="badge text-bg-primary rounded-pill">@(r.Id.Length >= 8 ? r.Id.Substring(0, 8) :
+                                                                                        r.Id)</span>
+                            </div>
+
+                            <dl class="row g-2 mb-4">
+                                <dt class="col-6 text-secondary fw-semibold">Medicamento</dt>
+                                <dd class="col-6 mb-0 text-break">
+                                    @r.Medicamento
+                                </dd>
+
+                                <dt class="col-6 text-secondary fw-semibold">Quantidade</dt>
+                                <dd class="col-6 mb-0 text-break">@r.quantidade</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }

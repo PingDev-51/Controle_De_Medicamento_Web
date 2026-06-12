@@ -5,7 +5,7 @@ using ControleDeMedicamento.WebApp.Modulos.ModuloEstoque.RequisicaoDeEntrada.Dom
 
 namespace ControleDeMedicamento.WebApp.Modulos.ModuloEstoque.Base.Infra;
 
-public class RepositorioRequisicaoEmArquivo : IRepositorioRequisicao
+public abstract class RepositorioRequisicaoEmArquivo : RequisicaoBase, IRepositorioRequisicao
 {
     protected readonly ContextoJson contexto;
     protected readonly List<RequisicaoBase> registros;
@@ -15,6 +15,8 @@ public class RepositorioRequisicaoEmArquivo : IRepositorioRequisicao
         this.contexto = contexto;
         registros = contexto.Requisicoes;
     }
+
+
 
     public void Cadastrar(RequisicaoBase requisicao)
     {

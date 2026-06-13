@@ -5,6 +5,7 @@ using ControleDeMedicamento.WebApp.ModuloDeMedicamentos.Dominio;
 using ControleDeMedicamento.WebApp.ModuloFornecedores.Dominio;
 using ControleDeMedicamento.WebApp.Modulos.ModuloEstoque.Base.Dominio;
 using ControleDeMedicamento.WebApp.Modulos.ModuloEstoque.RequisicaoDeEntrada.Dominio;
+using ControleDeMedicamento.WebApp.Modulos.ModuloEstoque.RequisicaoDeSaida.Dominio;
 using ControleDeMedicamento.WebApp.Modulos.ModuloFuncionarios.Dominio;
 
 namespace ControleDeMedicamento.WebApp.Arquivos.Infra.Arquivos;
@@ -15,8 +16,9 @@ public sealed class ContextoJson
     public List<Paciente> Pacientes { get; set; } = new();
     public List<Medicamento> Medicamentos { get; set; } = new();
     public List<Funcionario> Funcionarios { get; set; } = new();
-    public List<RequisicaoBase> Requisicoes = new List<RequisicaoBase>();
-
+    public List<Saida> Saidas { get; set; } = new();
+    public List<RequisicaoBase> Requisicoes { get; set; } = new();
+    
     private readonly string caminhoArquivo;
 
     public ContextoJson()
@@ -65,6 +67,7 @@ public sealed class ContextoJson
         Pacientes = contextoSalvo.Pacientes;
         Medicamentos = contextoSalvo.Medicamentos;
         Funcionarios = contextoSalvo.Funcionarios;
+        Saidas = contextoSalvo.Saidas;
         Requisicoes = contextoSalvo.Requisicoes;
     }
 }

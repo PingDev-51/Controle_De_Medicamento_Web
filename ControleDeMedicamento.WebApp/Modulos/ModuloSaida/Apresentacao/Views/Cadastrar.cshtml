@@ -22,12 +22,12 @@
     </div>
 
     <div class="mb-3">
-        <label asp-for="MedicamentoId" class="form-label fw-semibold text-primary text-uppercase small">Revista</label>
+        <label asp-for="MedicamentoId" class="form-label fw-semibold text-primary text-uppercase small">Medicamentos</label>
         <select asp-for="MedicamentoId" class="form-select">
-            <option value="">Selecione uma revista</option>
-            @foreach (OpcaoMedicamentosViewModel revista in Model.Medicametos)
+            <option value="">Selecione um mecicamento</option>
+            @foreach (OpcaoMedicamentosViewModel medicamento in Model.Medicametos)
             {
-                <option value="@revista.Id">@revista.Nome</option>
+                <option value="@medicamento.Id">@medicamento.Nome</option>
             }
         </select>
         <span asp-validation-for="MedicamentoId" class="text-danger small fw-semibold"></span>

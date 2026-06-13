@@ -17,11 +17,12 @@ public record ListarSaidaDto(
     int QuantidadeSaida
 );
 
-public record CadastrarSaidaDto(
-    DateTime Data,
-    string PacienteId,
-    string PacienteNome,
-    string MedicamentoId,
-    string MedicamentoNome,
-    int QuantidadeSaida
-);
+public record CadastrarSaidaDto
+{
+    public DateTime Data { get; set; }
+    public string PacienteId { get; set; }
+    public string PacienteNome { get; set; }
+    public string MedicamentoId { get; set; }
+    public string MedicamentoNome { get; set; }
+    public int QuantidadeSaida { get; set; }
+}

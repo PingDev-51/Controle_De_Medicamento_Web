@@ -38,17 +38,4 @@ public abstract class RepositorioRequisicaoEmArquivo : RequisicaoBase, IReposito
 
         return requisicoesEntrada;
     }
-
-    public List<Saida> SelecionarRequisicoesSaida()
-    {
-        List<Saida> requisicoesSaida = new List<Saida>();
-
-        foreach (RequisicaoBase req in registros)
-        {
-            if (req is Saida reqSaida)
-                requisicoesSaida.Add(reqSaida);
-        }
-
-        return requisicoesSaida;
-    }
 }

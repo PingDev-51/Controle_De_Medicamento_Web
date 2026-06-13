@@ -8,6 +8,5 @@ public interface IRepositorioRequisicao
 {
     void Cadastrar(RequisicaoBase requisicao);
     List<RequisicaoEntrada> SelecionarRequisicoesEntrada();
-    List<Saida> SelecionarRequisicoesSaida();
 }
 

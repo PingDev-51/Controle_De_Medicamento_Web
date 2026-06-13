@@ -1,34 +1,44 @@
 ﻿@using ControleDeMedicamento.WebApp.ModuloDeMedicamentos.Apresentacao
 @using ControleDeMedicamento.WebApp.ModuloFornecedores.Apresentacao
 @using ControleDeMedicamento.WebApp.Modulos.ModuloEstoque.RequisicaoDeEntrada.Apresentacao
+
 @{
     Layout = "_Layout";
     ViewBag.Titulo = "Cadastrar Requisição de Entrada";
 }
 
-@model CadastrarRequisicaoEntrdaViewModel;
+@model CadastrarRequisicaoEntrdaViewModel
 
-<form class="card border-primary-subtle shadow-sm mx-auto p-4" style="max-width: 620px;" asp-action="Cadastrar"
+<form class="card border-primary-subtle shadow-sm mx-auto p-4"
+      style="max-width: 620px;"
+      asp-action="Cadastrar"
       method="post">
 
     <div class="mb-3">
-        <label asp-for="FornecedorId"
-               class="form-label fw-semibold text-primary text-uppercase small">Funcionario</label>
-        <select asp-for="FornecedorId" class="form-select">
-            <option value="">Selecione um funcionario</option>
+        <label asp-for="FuncionarioId"
+               class="form-label fw-semibold text-primary text-uppercase small">
+            Funcionário
+        </label>
+
+        <select asp-for="FuncionarioId" class="form-select">
+            <option value="">Selecione um funcionário</option>
 
             @foreach (OpcaoFuncionarioViewModel funcionario in Model.Funcionarios)
             {
                 <option value="@funcionario.Id">@funcionario.Nome</option>
             }
         </select>
-        <span asp-validation-for="FornecedorId" class="text-danger small fw-semibold"></span>
+
+        <span asp-validation-for="FuncionarioId" class="text-danger small fw-semibold"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="FornecedorId"
-               class="form-label fw-semibold text-primary text-uppercase small">Medicamento</label>
-        <select asp-for="FornecedorId" class="form-select">
+        <label asp-for="MedicamentoId"
+               class="form-label fw-semibold text-primary text-uppercase small">
+            Medicamento
+        </label>
+
+        <select asp-for="MedicamentoId" class="form-select">
             <option value="">Selecione um medicamento</option>
 
             @foreach (OpcaoMedicamentoViewModel medicamento in Model.Medicamentos)
@@ -36,18 +46,30 @@
                 <option value="@medicamento.Id">@medicamento.Nome</option>
             }
         </select>
-        <span asp-validation-for="FornecedorId" class="text-danger small fw-semibold"></span>
+
+        <span asp-validation-for="MedicamentoId" class="text-danger small fw-semibold"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="CartaoSus" class="form-label fw-semibold text-primary text-uppercase small">Quantidade de
-            medicamentos</label>
-            <input asp-for="CartaoSus" type="number" min="1" class="form-control">
-            <span asp-validation-for="CartaoSus" class="text-danger small fw-semibold"></span>
-        </div>
+        <label asp-for="Quantidade"
+               class="form-label fw-semibold text-primary text-uppercase small">
+            Quantidade de medicamentos
+        </label>
 
-        <div class="d-flex justify-content-end gap-2 mt-4">
-            <a class="btn btn-outline-primary rounded-pill px-4" asp-action="Listar">Voltar</a>
-            <button class="btn btn-primary rounded-pill px-4" type="submit">Confirmar</button>
-        </div>
-    </form>
+        <input asp-for="Quantidade" type="number" min="1" class="form-control">
+
+        <span asp-validation-for="Quantidade" class="text-danger small fw-semibold"></span>
+    </div>
+
+    <div class="d-flex justify-content-end gap-2 mt-4">
+        <a class="btn btn-outline-primary rounded-pill px-4"
+           asp-action="Listar">
+            Voltar
+        </a>
+
+        <button class="btn btn-primary rounded-pill px-4" type="submit">
+            Confirmar
+        </button>
+    </div>
+
+</form>

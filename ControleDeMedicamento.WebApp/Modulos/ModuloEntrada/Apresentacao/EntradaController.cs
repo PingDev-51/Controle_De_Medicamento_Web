@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ControleDeMedicamento.WebApp.Modulos.ModuloEstoque.RequisicaoDeEntrada.Apresentacao;
 
-public class RequisicaoEntradaController : Controller
+public class EntradaController : Controller
 {
     private readonly IRepositorioRequisicaoEntrada repositorioRequisicaoEntrada;
     private readonly IRepositorioFuncionario repositorioFuncionario;
     private readonly IRepositorioMedicamento repositorioMedicamento;
 
-    public RequisicaoEntradaController(
+    public EntradaController(
         IRepositorioRequisicaoEntrada repositorioRequisicaoEntrada,
         IRepositorioFuncionario repositorioFuncionario,
         IRepositorioMedicamento repositorioMedicamento)
@@ -30,18 +30,19 @@ public class RequisicaoEntradaController : Controller
         return View(MapearRequisicoes(requisicoes));
     }
 
-    [HttpPost]
+    [HttpGet]
     public ActionResult Cadastrar()
     {
-        CadastrarRequisicaoEntrdaViewModel cadasstrarVm = new CadastrarRequisicaoEntrdaViewModel(
-           string.Empty,
-           string.Empty,
-           SelecionarFuncionario(),
-           SelecionarMedicamento(),
-           0
-       );
+        var CadastrarVm = new CadastrarRequisicaoEntrdaViewModel
+        {
+            FuncionarioId = string.Empty,
+            MedicamentoId = string.Empty,
+            Funcionarios = SelecionarFuncionario(),
+            Medicamentos = SelecionarMedicamento(),
+            Quantidade = 0
+        };
 
-        return View(cadasstrarVm);
+        return View(CadastrarVm);
     }
 
     [HttpPost]
@@ -52,23 +53,17 @@ public class RequisicaoEntradaController : Controller
 
         if (selecionarFuncionario == null)
             ModelState.AddModelError(nameof(cadastrarVm.FuncionarioId), "Selecione um funcionario valido");
+
         if (selecionarMedicamento == null)
             ModelState.AddModelError(nameof(cadastrarVm.MedicamentoId), "Selecione um medicamento valido");
 
-        if (!ModelState.IsValid)
-            return View(cadastrarVm with
-            {
-                Funcionarios = SelecionarFuncionario(),
-                Medicamentos = SelecionarMedicamento()
-            });
-
-        RequisicaoEntrada novarequisicao = new RequisicaoEntrada(
+        RequisicaoEntrada nova = new(
             selecionarFuncionario!,
             selecionarMedicamento!,
-            cadastrarVm.quantidade
+            cadastrarVm.Quantidade
         );
 
-        repositorioRequisicaoEntrada.Cadastrar(novarequisicao);
+        repositorioRequisicaoEntrada.Cadastrar(nova);
 
         return RedirectToAction(nameof(Listar));
     }

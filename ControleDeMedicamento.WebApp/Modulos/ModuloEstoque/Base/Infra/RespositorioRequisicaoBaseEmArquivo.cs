@@ -17,8 +17,6 @@ public abstract class RepositorioRequisicaoEmArquivo : RequisicaoBase, IReposito
         registros = contexto.Requisicoes;
     }
 
-
-
     public void Cadastrar(RequisicaoBase requisicao)
     {
         registros.Add(requisicao);

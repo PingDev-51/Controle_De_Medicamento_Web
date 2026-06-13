@@ -159,19 +159,19 @@ O projeto foi desenvolvido com foco em:
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/farmacia.git
+git clone https://github.com/PingDev-51/Controle_De_Medicamento_Web.git
 ```
 
 ### 2. Acesse a pasta do projeto
 
 ```bash
-cd farmacia
+cd ControleDeMedicamento.WebApp
 ```
 
 ### 3. Execute o projeto
 
 ```bash
-dotnet run --project Farmacia.WebApp
+dotnet run --project ControleDeMedicamento.WebApp
 ```
 
 ### 4. Acesse no navegador

@@ -1,6 +1,6 @@
 <div align="center">
 
-# 💊 Farmácia
+# 💊 Controle De Medicamentos
 
 ### Sistema de gerenciamento de estoque farmacêutico em **ASP.NET MVC com POO**
 Controle de fornecedores, pacientes, medicamentos, funcionários e movimentações de estoque com separação de responsabilidades e regras de negócio reais.
